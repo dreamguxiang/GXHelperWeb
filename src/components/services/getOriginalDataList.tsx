@@ -2,7 +2,7 @@ import {DataType} from "../pages/OriginalData";
 
 export const getOriginalDataList = async (bottom : string) => {
     //axios.get("/api/v1/getOriginalDataList")
-    const req = await fetch(`/api/v1/getOriginalDataList`, {
+    const req = await fetch(`http://api.litetitle.com:40016/api/v1/getOriginalDataList`, {
         method: 'GET',
     });
     let dataSource: DataType[] = [];

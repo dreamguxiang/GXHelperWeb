@@ -22,7 +22,6 @@ export default class Home extends Component {
                                         这里将提供BDS的原始数据，以及在线材质包加密功能！
                                     </Text>
                                 </Paragraph>
-
                                 <Divider/>
                             </Typography>
                         </div>
