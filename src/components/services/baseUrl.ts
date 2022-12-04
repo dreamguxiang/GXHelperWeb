@@ -1,1 +1,1 @@
-export const baseURL = window.location.hostname === 'bds.litetitle.com' ? 'http://api.litetitle.com:40116' : '';
+export const baseURL = window.location.hostname === 'bds.litetitle.com' ? 'https://api.litetitle.com:40116' : '';
