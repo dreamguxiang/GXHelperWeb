@@ -8,9 +8,8 @@ import {
     VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import {NavLink, Router,useLocation, useRoutes} from "react-router-dom";
+import {NavLink,useLocation, useRoutes} from "react-router-dom";
 import {Home} from '../routes/Home';
-import {ErrorPage} from "../pages/ErrorPage";
 import {OriginalData} from "../pages/OriginalData";
 
 const { Header, Sider, Footer } = Layout;

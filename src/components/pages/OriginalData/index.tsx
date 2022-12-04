@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Layout, Radio, Button, Table, Tag, Breadcrumb, Dropdown} from 'antd';
+import {Layout, Radio, Button, Table, Tag, Breadcrumb} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import {getOriginalDataList} from '../../services/getOriginalDataList';
 import {

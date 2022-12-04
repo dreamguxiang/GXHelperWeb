@@ -1,4 +1,4 @@
-import {createBrowserRouter, RouterProvider,NavLink} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import * as React from 'react';
 import {Root} from './routes/Root';
 import {ErrorPage} from "./pages/ErrorPage";
