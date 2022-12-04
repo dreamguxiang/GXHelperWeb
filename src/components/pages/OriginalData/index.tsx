@@ -63,10 +63,17 @@ type TableShowVersion =
     | 'release'
     | 'preview';
 
-
+let initData = 0;
 export const OriginalData = () => {
     const [bottom, setBottom] = useState<TableShowVersion>('all');
     const [data, setData]  =  useState<DataType[]>(); // 用于存储从后端获取的数据
+
+    if (initData === 0) {
+        initData = 1;
+        getOriginalDataList(bottom).then((dataSource) => {
+            setData(dataSource);
+        });
+    }
 
     return (
         <Content style={{margin: '0 16px'}}>
