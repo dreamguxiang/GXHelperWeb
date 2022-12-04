@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
 import {OriginalData} from '../pages/OriginalData';
-export const Home = () => {
+
+export const OriginalDataInit = () => {
     return (
         <OriginalData />
     );

@@ -10,7 +10,7 @@ import {
 import { Layout, Menu } from 'antd';
 import {NavLink,useLocation, useRoutes} from "react-router-dom";
 import {Home} from '../routes/Home';
-import {OriginalData} from "../pages/OriginalData";
+import {OriginalDataInit} from "./OriginalData";
 
 const { Header, Sider, Footer } = Layout;
 
@@ -22,7 +22,7 @@ export const Root = () => {
         const routes = useRoutes([
             {
                 path:'/originaldata',
-                element: <OriginalData />,
+                element: <OriginalDataInit />,
             },
             {
                 path:'/',

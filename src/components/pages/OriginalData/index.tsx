@@ -63,16 +63,22 @@ type TableShowVersion =
     | 'release'
     | 'preview';
 
-let initData = 0;
+let initdata = false;
 export const OriginalData = () => {
-    const [bottom, setBottom] = useState<TableShowVersion>('all');
+    const [bottom, setBottom] = useState<TableShowVersion>();
     const [data, setData]  =  useState<DataType[]>(); // 用于存储从后端获取的数据
 
-    if (initData === 0) {
-        initData = 1;
-        getOriginalDataList(bottom).then((dataSource) => {
-            setData(dataSource);
-        });
+    if (bottom === undefined) {
+        setBottom('all');
+        initdata = false;
+    }
+
+    if (!initdata) {
+        initdata = true;
+        getOriginalDataList('all').then((res) => {
+            console.log(res);
+            setData(res);
+        })
     }
 
     return (
@@ -84,8 +90,9 @@ export const OriginalData = () => {
                 <div>
                     <Radio.Group
                         options={topOptions}
-                        defaultValue={bottom}
+                        defaultValue={'all'}
                         onChange={(e) => {
+
                             setBottom(e.target.value)
                             getOriginalDataList(e.target.value).then((res) => {
                                 return setData(res);
