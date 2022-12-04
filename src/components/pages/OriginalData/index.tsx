@@ -19,7 +19,7 @@ const columns: ColumnsType<DataType> = [
         title: 'BDS Version',
         dataIndex: 'bdsversion',
         key: 'bdsversion',
-        render: (bdsVersion) => <a>{bdsVersion}</a>,
+        render: (bdsVersion) => <p>{bdsVersion}</p>,
     },
     {
         title: 'Update Time',
