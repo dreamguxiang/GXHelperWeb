@@ -19,7 +19,18 @@ const columns: ColumnsType<DataType> = [
         title: 'BDS Version',
         dataIndex: 'bdsversion',
         key: 'bdsversion',
-        render: (bdsVersion) => <p>{bdsVersion}</p>,
+        render: (bdsversion, record) => {
+            if (record.tags === 'Release') {
+                console.log(bdsversion);
+                return (
+                    <a href={ "https://minecraft.azureedge.net/bin-win/bedrock-server-"+bdsversion+".zip"}>{bdsversion}</a>
+                )
+            } else if (record.tags === 'Preview') {
+                return (
+                    <a href={ "https://minecraft.azureedge.net/bin-win-preview/bedrock-server-"+bdsversion+".zip"}>{bdsversion}</a>
+                )
+            }
+        },
     },
     {
         title: 'Update Time',
@@ -43,7 +54,7 @@ const columns: ColumnsType<DataType> = [
         key: 'download',
         render: (_, record) => (
             <Button type="primary" shape="round" icon={<DownloadOutlined />} onClick={() => {
-                window.open(record.Download);
+                window.open("https://github.com/dreamguxiang/OriginalData/raw/main/zip/"+ record.key+".zip");
             }
             } > Download </Button>
         ),
