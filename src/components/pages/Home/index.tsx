@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Breadcrumb,Typography,Divider} from "antd";
 import {Layout} from 'antd';
-const { Title,Paragraph,Text, } = Typography;
+const { Title,Paragraph,Text } = Typography;
 const { Content } = Layout;
 
 export default class Home extends Component {

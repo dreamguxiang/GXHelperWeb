@@ -3,15 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { ConfigProvider } from 'antd';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
+    <ConfigProvider
+        theme={{
+            token: {
+                colorPrimary: '#ff627b',
+            },
+        }}
+    >
     <React.StrictMode>
       <App />
     </React.StrictMode>
+    </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

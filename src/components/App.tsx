@@ -13,7 +13,10 @@ const App: React.FC = () => {
                 path: '/',
             },
             {
-                path: '/originaldata',
+                path: '/OriginalData',
+            },
+            {
+                path: '/PackEncrypted',
             }
         ]
     }]);

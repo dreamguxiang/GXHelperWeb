@@ -11,6 +11,7 @@ import { Layout, Menu } from 'antd';
 import {NavLink,useLocation, useRoutes} from "react-router-dom";
 import {Home} from '../routes/Home';
 import {OriginalDataInit} from "./OriginalData";
+import {PackEncryptedInit} from "./PackEncrypted";
 
 const { Header, Sider, Footer } = Layout;
 
@@ -23,6 +24,10 @@ export const Root = () => {
             {
                 path:'/originaldata',
                 element: <OriginalDataInit />,
+            },
+            {
+                path:'/PackEncrypted',
+                element: <PackEncryptedInit />,
             },
             {
                 path:'/',
@@ -56,10 +61,10 @@ export const Root = () => {
                             ),
                         },
                         {
-                            key: 'packencrypted',
+                            key: '/PackEncrypted',
                             icon: <UploadOutlined />,
                             label: (
-                                <NavLink to="/packencrypted" >Pack Encrypted</NavLink>
+                                <NavLink to="/PackEncrypted" >Pack Encrypted</NavLink>
                             ),
                         },
                     ]}

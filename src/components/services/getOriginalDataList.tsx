@@ -1,5 +1,7 @@
-import {DataType} from "../pages/OriginalData";
+import {DataType,openNotification} from "../pages/OriginalData";
 import {baseURL} from "./baseUrl";
+
+
 export const getOriginalDataList = async (bottom : string) => {
     //axios.get("/api/v1/getOriginalDataList")
     const req = await fetch(`${baseURL}/api/v1/getOriginalDataList`, {
@@ -9,6 +11,8 @@ export const getOriginalDataList = async (bottom : string) => {
 
     if (req.ok) {
         dataSource = await req.json();
+    }else{
+        openNotification()
     }
     switch (bottom) {
         case 'all':

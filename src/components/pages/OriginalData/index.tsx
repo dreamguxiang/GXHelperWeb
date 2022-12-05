@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Layout, Radio, Button, Table, Tag, Breadcrumb,message} from 'antd';
+import {Layout, Radio, Button, Table, Tag, Breadcrumb,message,notification} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import {getOriginalDataList} from '../../services/getOriginalDataList';
 import {
@@ -14,6 +14,14 @@ const topOptions = [
     { label: 'Preview', value: 'preview' },
 ];
 
+export const openNotification = () => {
+    notification.open({
+        message: 'Failed!',
+        description:
+            'The connection to the server was interrupted, please try again later.',
+        duration: 5,
+    });
+};
 
 const columns: ColumnsType<DataType> = [
     {
@@ -86,12 +94,10 @@ export interface DataType {
     Download: string;
 }
 
-
 type TableShowVersion =
     | 'all'
     | 'release'
     | 'preview';
-
 
 let initdata = false;
 export const OriginalData = () => {
@@ -117,7 +123,7 @@ export const OriginalData = () => {
     return (
         <Content style={{margin: '0 16px'}}>
             <Breadcrumb style={{margin: '16px 0'}}>
-                <Breadcrumb.Item>OriginalData</Breadcrumb.Item>
+                <Breadcrumb.Item>Latest Release: </Breadcrumb.Item>
             </Breadcrumb>
             <div>
                 <div>
