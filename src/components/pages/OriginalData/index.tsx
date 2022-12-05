@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import {Layout, Radio, Button, Table, Tag, Breadcrumb} from 'antd';
+import {Layout, Radio, Button, Table, Tag, Breadcrumb,message} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import {getOriginalDataList} from '../../services/getOriginalDataList';
 import {
     DownloadOutlined
 } from '@ant-design/icons';
+import {downLoadFile} from "../../utils/downLoadFile";
 const { Content } = Layout;
 
 const topOptions = [
@@ -18,6 +19,19 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'BDS Version',
         dataIndex: 'bdsversion',
+        defaultSortOrder: 'ascend',
+        sorter: (a, b) => {
+            let v1 = a.key.toString().split('.');
+            let v2 = b.key.toString().split('.');
+            const len = Math.max(v1.length, v2.length);
+            for (let i = 0; i < len; i++) {
+                const n1 = Number(v1[i] || 0);
+                const n2 = Number(v2[i] || 0);
+                if (n1 > n2) return -1;
+                if (n1 < n2) return 1;
+            }
+            return 0;
+        },
         key: 'bdsversion',
         render: (bdsversion, record) => {
             if (record.tags === 'Release') {
@@ -52,14 +66,18 @@ const columns: ColumnsType<DataType> = [
         title: 'Download',
         dataIndex: 'download',
         key: 'download',
-        render: (_, record) => (
-            <Button type="primary" shape="round" icon={<DownloadOutlined />} onClick={() => {
-                window.open("https://github.com/dreamguxiang/OriginalData/raw/main/zip/"+ record.key+".zip");
-            }
-            } > Download </Button>
-        ),
+        render: (_, record) => {
+            return (
+                <Button type="primary" shape="round" icon={<DownloadOutlined/>} onClick={() => {
+                    message.success('Please wait, downloading now!');
+                    downLoadFile("https://github.com/dreamguxiang/OriginalData/raw/main/zip/" + record.key + ".zip" ,"OriginalData-"+record.key+".zip" )
+                }
+                }> Download</Button>
+            )
+        },
     },
 ];
+
 export interface DataType {
     key: React.Key;
     bdsVersion: string;
@@ -74,10 +92,12 @@ type TableShowVersion =
     | 'release'
     | 'preview';
 
+
 let initdata = false;
 export const OriginalData = () => {
     const [bottom, setBottom] = useState<TableShowVersion>();
     const [data, setData]  =  useState<DataType[]>(); // 用于存储从后端获取的数据
+    const [loading, setLoading] = useState(false);
 
     if (bottom === undefined) {
         setBottom('all');
@@ -86,7 +106,9 @@ export const OriginalData = () => {
 
     if (!initdata) {
         initdata = true;
+        setLoading(true);
         getOriginalDataList('all').then((res) => {
+            setLoading(false);
             console.log(res);
             setData(res);
         })
@@ -103,15 +125,19 @@ export const OriginalData = () => {
                         options={topOptions}
                         defaultValue={'all'}
                         onChange={(e) => {
-
                             setBottom(e.target.value)
+                            setLoading(true);
                             getOriginalDataList(e.target.value).then((res) => {
+                                setLoading(false);
                                 return setData(res);
                             })
                         }}
                     />
                 </div>
-                <Table columns={columns} dataSource={ data } />
+                <Table columns={columns}
+                       dataSource={ data }
+                       loading={loading}
+                />
             </div>
         </Content>
     );
