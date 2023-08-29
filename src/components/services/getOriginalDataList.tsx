@@ -6,7 +6,6 @@ export const getOriginalDataList = async (bottom : string) => {
     //axios.get("/api/v1/getOriginalDataList")
     const req = await fetch(`${baseURL}/api/v1/getDataList`, {
         method: 'GET',
-        mode: 'no-cors',
     });
     let dataSource: DataType[] = [];
 
