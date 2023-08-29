@@ -26,11 +26,11 @@ export const openNotification = () => {
 const columns: ColumnsType<DataType> = [
     {
         title: 'BDS Version',
-        dataIndex: 'bdsversion',
+        dataIndex: 'bdsVersion',
         defaultSortOrder: 'ascend',
         sorter: (a, b) => {
-            let v1 = a.key.toString().split('.');
-            let v2 = b.key.toString().split('.');
+            let v1 = a.bdsVersion.toString().split('.');
+            let v2 = b.bdsVersion.toString().split('.');
             const len = Math.max(v1.length, v2.length);
             for (let i = 0; i < len; i++) {
                 const n1 = Number(v1[i] || 0);
@@ -40,7 +40,7 @@ const columns: ColumnsType<DataType> = [
             }
             return 0;
         },
-        key: 'bdsversion',
+        key: 'bdsVersion',
         render: (bdsversion, record) => {
             if (record.tags === 'Release') {
                 console.log(bdsversion);
@@ -56,8 +56,8 @@ const columns: ColumnsType<DataType> = [
     },
     {
         title: 'Update Time',
-        dataIndex: 'updatetime',
-        key: 'updatetime',
+        dataIndex: 'updateTime',
+        key: 'updateTime',
     },
     {
         title: 'Tags',
@@ -78,7 +78,7 @@ const columns: ColumnsType<DataType> = [
             return (
                 <Button type="primary" shape="round" icon={<DownloadOutlined/>} onClick={() => {
                     message.success('Please wait, downloading now!');
-                    downLoadFile(record.Download,"OriginalData-"+record.key+".zip" )
+                    downLoadFile(record.download,"OriginalData-"+record.bdsVersion+".zip" )
                 }
                 }> Download</Button>
             )
@@ -91,7 +91,7 @@ export interface DataType {
     bdsVersion: string;
     updateTime: string;
     tags: string;
-    Download: string;
+    download: string;
 }
 
 type TableShowVersion =
