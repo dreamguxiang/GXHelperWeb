@@ -78,7 +78,7 @@ const columns: ColumnsType<DataType> = [
             return (
                 <Button type="primary" shape="round" icon={<DownloadOutlined/>} onClick={() => {
                     message.success('Please wait, downloading now!');
-                    downLoadFile("https://github.com/dreamguxiang/OriginalData/raw/main/zip/" + record.key + ".zip" ,"OriginalData-"+record.key+".zip" )
+                    downLoadFile(record.Download,"OriginalData-"+record.key+".zip" )
                 }
                 }> Download</Button>
             )
