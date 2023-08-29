@@ -7,6 +7,8 @@ export const getOriginalDataList = async (bottom : string) => {
     const req = await fetch(`${baseURL}/api/v1/getDataList`, {
         method: 'GET',
     });
+    console.log(baseURL)
+    console.log(window.location.hostname)
     let dataSource: DataType[] = [];
 
     if (req.ok) {
