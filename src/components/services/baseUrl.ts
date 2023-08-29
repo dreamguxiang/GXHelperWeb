@@ -1,1 +1,1 @@
-export const baseURL = window.location.hostname === 'bds.litetitle.com' ? 'https://api.litetitle.com:40116' : '';
+export const baseURL = window.location.hostname === 'oridata.qingyuga.me' ? 'https://oridata.api.qingyuga.me' : '';
