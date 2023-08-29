@@ -4,7 +4,7 @@ import {baseURL} from "./baseUrl";
 
 export const getOriginalDataList = async (bottom : string) => {
     //axios.get("/api/v1/getOriginalDataList")
-    const req = await fetch(`/api/v1/getDataList`, {
+    const req = await fetch(`http://localhost:3000/api/v1/getDataList`, {
         method: 'GET',
     });
     let dataSource: DataType[] = [];
