@@ -1,11 +1,10 @@
 import {DataType,openNotification} from "../pages/OriginalData";
-import {baseURL} from "./baseUrl";
-
 
 export const getOriginalDataList = async (bottom : string) => {
     //axios.get("/api/v1/getOriginalDataList")
-    const req = await fetch(`${baseURL}/api/v1/getDataList`, {
+    const req = await fetch(`https://oridata.api.qingyuga.me/api/v1/getDataList`, {
         method: 'GET',
+        mode: 'no-cors',
     });
     let dataSource: DataType[] = [];
 
