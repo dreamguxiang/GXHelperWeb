@@ -115,7 +115,6 @@ export const OriginalData = () => {
         setLoading(true);
         getOriginalDataList('all').then((res) => {
             setLoading(false);
-            console.log(res);
             setData(res);
         })
     }
