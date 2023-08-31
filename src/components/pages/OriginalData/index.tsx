@@ -41,18 +41,8 @@ const columns: ColumnsType<DataType> = [
             return 0;
         },
         key: 'bdsVersion',
-        render: (bdsversion, record) => {
-            if (record.tags === 'Release') {
-                console.log(bdsversion);
-                return (
-                    <a href={ "https://minecraft.azureedge.net/bin-win/bedrock-server-"+bdsversion+".zip"}>{bdsversion}</a>
-                )
-            } else if (record.tags === 'Preview') {
-                return (
-                    <a href={ "https://minecraft.azureedge.net/bin-win-preview/bedrock-server-"+bdsversion+".zip"}>{bdsversion}</a>
-                )
-            }
-        },
+        
+    
     },
     {
         title: 'Update Time',
